@@ -1,0 +1,13 @@
+<h1>New Service</h1>
+<%= form_for @service do |form| %>
+    <p><%= form.label :title %>
+    <%= form.text_field :title, required: "required" %></p>
+
+    <p><%= form.label :description %>
+    <%= form.text_area :description, required: "required", value: "Enter job description here" %></p>
+
+    <p><%= form.label :location %>
+    <%= form.text_field :location, required: "required" %></p>
+
+    <%= form.submit "Submit" %>
+<% end %>
