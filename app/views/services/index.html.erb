@@ -1,0 +1,8 @@
+<h1>Services</h1>
+<% @services.each do |service| %>
+    <div class="service-listing">
+        <h2><%= service.title %></h2>
+        <p><%= service.location %></p>
+        <p><%= service.description %></p>
+    </div>
+<% end %>
