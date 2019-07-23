@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
   def index
-    @services = Service.all
+    @services = Service.where(completed_on: nil)
   end
 end
