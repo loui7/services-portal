@@ -10,8 +10,20 @@
   </head>
 
   <body>
+  <div>
+    <%= render "shared/topnav"%>
+  </div>
+  <div class="sidenav">
+     <%= render "shared/sidenav"%>
+  </div>
+
+  <section class="page">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    
+    <div>
     <%= yield %>
+    </div>
+    </section>
   </body>
 </html>

@@ -1,0 +1,20 @@
+.sidenav {
+    @include font-settings($size:0.75em);
+    margin: 0;
+    padding: 0;
+    background-color: $nav-bg-color;
+    display: flex;
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    overflow:auto;
+   
+    a {
+        margin-left:1em;
+        color: $main-font-color;
+        text-decoration: none;
+        &:hover, :active, :visited {
+            color: $main-font-color;
+        }
+    }
+}
