@@ -9,6 +9,11 @@
     <p><%= form.label :location %>
     <%= form.text_field :location, required: "required" %></p>
 
+    <p>
+        <%= form.label :image %>
+        <%= form.file_field :image %>
+    </p>        
+
     <%= form.submit "Submit" %>
 <% end %>
 <%= button_to "Cancel", services_path, method: :get %>
