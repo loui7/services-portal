@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_24_034050) do
+ActiveRecord::Schema.define(version: 2019_07_24_041949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2019_07_24_034050) do
     t.datetime "completed_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,13 +51,11 @@ ActiveRecord::Schema.define(version: 2019_07_24_034050) do
     t.string "surname"
     t.string "contact_number"
     t.text "address"
-    t.bigint "service_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["service_id"], name: "index_users_on_service_id"
   end
 
   add_foreign_key "proposals", "services"
   add_foreign_key "proposals", "users"
-  add_foreign_key "users", "services"
+  add_foreign_key "services", "users"
 end
