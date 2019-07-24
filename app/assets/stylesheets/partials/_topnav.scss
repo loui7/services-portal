@@ -1,0 +1,18 @@
+.topnav {
+    @include font-settings($size: 0.75em);
+    background-color:$nav-bg-color;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    width: 100%;
+    height: 5vh;
+    padding: 25px;
+    a {
+        margin-left:1em;
+        color: $main-font-color;
+        text-decoration: none;
+        &:hover, :active, :visited {
+            color: $main-font-color;
+        }
+    }
+}

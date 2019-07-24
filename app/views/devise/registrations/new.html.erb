@@ -21,6 +21,26 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :surname %><br />
+    <%= f.text_field :surname, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_number %><br />
+    <%= f.text_field :contact_number, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, required: true %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

@@ -1,3 +1,9 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap');
+@import 'helpers/mixins.scss';
+@import 'helpers/variables.scss';
+@import 'partials/_page.scss';
+@import 'partials/_sidenav.scss';
+@import 'partials/_topnav.scss'
