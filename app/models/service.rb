@@ -3,5 +3,6 @@ class Service < ApplicationRecord
     validates :description, presence: true
     validates :location, presence: true
 
+    belongs_to :user
     has_many :proposals
 end

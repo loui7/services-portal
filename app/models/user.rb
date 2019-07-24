@@ -9,5 +9,6 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :email, presence: true
 
+  has_many :services
   has_many :proposals
 end
