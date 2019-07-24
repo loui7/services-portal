@@ -1,11 +1,16 @@
 <div id="sidenav">
 <%if user_signed_in?%>
- <%=link_to  'Create a Job' %>
- <%=link_to  "Edit a Job"%>
- <%=link_to  'Delete a Job'%>
- <%=link_to  "Create a Proposal"%>
- <%=link_to  "Edit a Proposal"%>
- <%=link_to  'Delete a Proposal'%>
+    <%=link_to  'Home', root_path%>
+    <%=link_to  'Jobs', services_path%>
+    <%=link_to  'Browse Jobs'%>
+    <%=link_to  'My Jobs' %>   
+    <%=link_to  'Create a Job', new_service_path%>
+    <%=link_to  "Edit a Job"%>
+    <%=link_to  'Delete a Job'%>
+    <%=link_to  'Proposal' %>       
+    <%=link_to  "Create a Proposal"%>
+    <%=link_to  "Edit a Proposal"%>
+    <%=link_to  'Delete a Proposal'%>
  <%end%>
 
 </div>
