@@ -24,6 +24,7 @@ class ServicesController < ApplicationController
 
   def show
     @service = Service.find(params[:id])
+    @my_proposal = Proposal.where(user: current_user).where(service: @service).first
   end
 
   def edit
