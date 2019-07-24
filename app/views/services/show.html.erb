@@ -1,7 +1,16 @@
 <h1><%= @service.title %></h1>
 <p><%= @service.location %></p>
 <p><%= @service.description %></p>
-<% if @service.user == current_user %>
-    <%= link_to "Edit", edit_service_path(@service.id) %>
-    <%= link_to "Remove", service_path(@service.id), method: :delete, data: { confirm: "Are you sure?" } %>
+<% if user_signed_in? %>
+    <% if @service.user == current_user %>
+        <%= link_to "Edit", edit_service_path(@service.id) %>
+        <%= link_to "Remove", service_path(@service.id), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+    <% @service.proposals.each do |proposal| %>
+        <h3><%= proposal.user.name %></h3>
+        <p>Offering <%= number_to_currency(proposal.price / 100.0, precision: 2) %></p>
+        <p>Notes:</p>
+        <p><%= proposal.notes %></p>
+        <%= link_to "Accept this proposal" %>
+    <% end %>
 <% end %>
