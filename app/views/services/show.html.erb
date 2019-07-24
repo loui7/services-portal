@@ -1,6 +1,6 @@
 <h1><%= @service.title %></h1>
 <p><%= @service.location %></p>
 <p><%= @service.description %></p>
-<% if @service.user != current_user %>
-    <%= button_to "Remove" %>
+<% if @service.user == current_user %>
+    <%= link_to "Remove", service_path(@service.id), method: :delete, data: { confirm: "Are you sure?" } %>
 <% end %>

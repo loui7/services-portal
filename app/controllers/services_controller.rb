@@ -12,6 +12,7 @@ class ServicesController < ApplicationController
     service.title = params[:service][:title]
     service.description = params[:service][:description]
     service.location = params[:service][:location]
+    current_user.services << service
     if service.save
       flash[:alert] = "Your service has been posted"
       redirect_to services_path
@@ -19,5 +20,16 @@ class ServicesController < ApplicationController
       flash[:alert] = service.errors.full_messages[0]
       render 'new'
     end
+  end
+
+  def show
+    @service = Service.find(params[:id])
+  end
+
+  def destroy
+    service = Service.find(params[:id])
+    service.destroy
+    flash[:alert] = "Job #{service.title} has been removed"
+    redirect_to services_path
   end
 end
