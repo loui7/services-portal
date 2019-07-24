@@ -1,0 +1,6 @@
+<h1><%= @service.title %></h1>
+<p><%= @service.location %></p>
+<p><%= @service.description %></p>
+<% if @service.user != current_user %>
+    <%= button_to "Remove" %>
+<% end %>
