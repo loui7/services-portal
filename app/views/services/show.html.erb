@@ -1,10 +1,23 @@
 <h1><%= @service.title %></h1>
+<p> Posted by <%= "#{@service.user.name} #{@service.user.surname}" %>
 <p><%= @service.location %></p>
 <p><%= @service.description %></p>
+<p>Number of proposals: <%= @service.proposals.count %></p>
+<p>Average proposal: <%= number_to_currency(@service.average_proposal / 100.0) %></p>
 <% if user_signed_in? %>
     <% if @service.user == current_user %>
         <%= link_to "Edit", edit_service_path(@service.id) %>
         <%= link_to "Remove", service_path(@service.id), method: :delete, data: { confirm: "Are you sure?" } %>
+        <h2>Proposals</h2>
+        <% @service.proposals.each do |proposal| %>
+            <% if proposal != @my_proposal %>
+                <h3><%= proposal.user.name %></h3>
+                <p>Offering <%= number_to_currency(proposal.price / 100.0, precision: 2) %></p>
+                <p>Notes:</p>
+                <p><%= proposal.notes %></p>
+                <%= link_to "Accept this proposal" %>
+            <% end %>
+        <% end %>
     <% else %>
         <% if @my_proposal %>
             <p>My proposal: <%= number_to_currency(@my_proposal.price / 100.0, precision: 2) %></p>
@@ -14,15 +27,6 @@
             <%= link_to "Withdraw" %>
         <% else %>
             <%= link_to "Make a proposal" %>
-        <% end %>
-    <% end %>
-    <% @service.proposals.each do |proposal| %>
-        <% if proposal != @my_proposal %>
-            <h3><%= proposal.user.name %></h3>
-            <p>Offering <%= number_to_currency(proposal.price / 100.0, precision: 2) %></p>
-            <p>Notes:</p>
-            <p><%= proposal.notes %></p>
-            <%= link_to "Accept this proposal" %>
         <% end %>
     <% end %>
 <% end %>
