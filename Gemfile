@@ -61,6 +61,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
+#Devise Gem
 gem 'devise'
 
+#Cloundary Gem and Storage
+gem 'cloudinary', require: false
+gem 'activestorage-cloudinary-service'

@@ -5,4 +5,5 @@ class Service < ApplicationRecord
 
     belongs_to :user
     has_many :proposals
+    has_many_attached :image
 end
