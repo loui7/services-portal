@@ -1,0 +1,31 @@
+<% unless @services_with_proposals.empty? %>
+  <h2>Proposals to Review</h2>
+  <% @services_with_proposals.each do |service| %>
+    <h3><%= service[:name] %></h3>
+    <ul>
+    <% service[:proposals].each do |proposal| %>
+        <li>
+          Name: <%= proposal.user.name %><br/>
+          Price: <%= proposal.price %>
+        </li>
+
+    <% end %>
+    </ul>
+  <% end %>
+<% end %>
+
+<% unless @submitted_proposals.empty? %>
+  <h2>Your proposals</h2>
+  <ul>
+    <% @submitted_proposals.each do |proposal| %>
+      <li>
+        Service: <%= proposal.service.title %><br/>
+        Price: <%= proposal.price %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @services_with_proposals.empty? && @submitted_proposals.empty? %>
+  <h3>No proposals found associated with this account.</h3>
+<% end %>

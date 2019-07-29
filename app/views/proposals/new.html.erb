@@ -1,0 +1,11 @@
+<h1>New Proposal</h1>
+<%= form_for @proposal do |form| %>
+    <p><%= form.label :price %>
+    <%= form.number_field :price, required: "required" %></p>
+
+    <p><%= form.label :notes %>
+    <%= form.text_area :notes, placeholder: "Enter proposal notes." %></p>
+
+    <%= form.submit "Submit" %>
+<% end %>
+<%= button_to "Cancel", proposals_path, method: :get %>
