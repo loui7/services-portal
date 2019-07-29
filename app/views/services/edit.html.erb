@@ -1,0 +1,15 @@
+<%= form_for @service do |form| %>
+    <%= form.hidden_field :id %>
+
+    <p><%= form.label :title %>
+    <%= form.text_field :title, required: "required", value: @service.title %></p>
+
+    <p><%= form.label :description %>
+    <%= form.text_area :description, required: "required", value: @service.description %></p>
+
+    <p><%= form.label :location %>
+    <%= form.text_field :location, required: "required", value: @service.location %></p>
+
+    <%= form.submit "Update" %>
+<% end %>
+<%= button_to "Cancel", service_path(@service.id), method: :get %>
