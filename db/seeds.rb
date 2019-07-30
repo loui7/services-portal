@@ -22,6 +22,8 @@ for i in 0..10 do
     user.email = "user#{i}@test.com"
     user.name = first_names.shuffle[0]
     user.surname = last_names.shuffle[0]
+    user.address = "No address provided"
+    user.contact_number = "0400 000 000"
     user.password = "password"
     user.save
 
