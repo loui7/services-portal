@@ -1,16 +1,9 @@
 <div id="sidenav">
-<%if user_signed_in?%>
-    <%=link_to  'Home', root_path%>
-    <%=link_to  'Jobs', services_path%>
-    <%=link_to  'Browse Jobs'%>
-    <%=link_to  'My Jobs' %>   
-    <%=link_to  'Create a Job', new_service_path%>
-    <%=link_to  "Edit a Job"%>
-    <%=link_to  'Delete a Job'%>
-    <%=link_to  'Proposal' %>       
-    <%=link_to  "Create a Proposal"%>
-    <%=link_to  "Edit a Proposal"%>
-    <%=link_to  'Delete a Proposal'%>
- <%end%>
-
+    <!-- Removed some of the links here that should really be attached to the service or proposal itself -->
+    <!-- Also removed the check if user_signed_in - this can be achieved by placing a before_action authenticate_user on the controllers -->
+    <p><%=link_to  'Home', root_path%></p>
+    <p><%=link_to  'Browse Jobs', services_path%></p>
+    <p><%=link_to  'Create a Job', new_service_path%></p>
+    <p><%=link_to  'My Jobs', my_services_path %></p>
+    <p><%=link_to  'My Proposals' %></p>
 </div>

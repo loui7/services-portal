@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
   def index
-    @services = Service.where(completed_on: nil)
+    @services = Service.where(completed_on: nil).where.not(user: current_user)
   end
 
   def new
@@ -53,5 +53,9 @@ class ServicesController < ApplicationController
     service.destroy
     flash[:alert] = "Job #{service.title} has been removed"
     redirect_to services_path
+  end
+
+  def my_services
+    @services = Service.where(user: current_user)
   end
 end
