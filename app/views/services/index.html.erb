@@ -1,8 +1,8 @@
 <h1>Services</h1>
-<%= link_to "Request a service", new_service_path %>
 <% @services.each do |service| %>
     <div class="service-listing">
-        <h2><%= service.title %></h2>
+        <h2><%= link_to service.title, service_path(service.id) %></h2>
+        <p>Posted by <%= "#{service.user.name} #{service.user.surname}" %></p>
         <p><%= service.location %></p>
         <p><%= service.description %></p>
     </div>
