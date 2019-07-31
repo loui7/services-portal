@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_07_24_051407) do
   end
 
   create_table "proposals", force: :cascade do |t|
-    t.boolean "accepted", default: false, null: false
+    t.boolean "accepted"
     t.integer "price", default: 0, null: false
     t.text "notes"
     t.bigint "user_id", null: false
