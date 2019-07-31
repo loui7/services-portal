@@ -1,0 +1,19 @@
+<h1>Payments</h1>
+  
+<button id="pay-now">Pay now
+    <script src="https://js.stripe.com/v3/"></script>
+</button>
+<script>
+    var stripe = Stripe('pk_test_ZgRDvv53P19xEqHnxaYy3A8Y00EipdpPEr');
+    function redirectToStripe() {
+    stripe.redirectToCheckout({
+    sessionId: '<%= @session.id %>'
+    }).then(function (result) {
+    // If `redirectToCheckout` fails due to a browser or network
+    // error, display the localized error message to your customer
+    // using `result.error.message`.
+    });
+    }
+    document.querySelector("#pay-now").addEventListener("click",
+    redirectToStripe)
+</script>
