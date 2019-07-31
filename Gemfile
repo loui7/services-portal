@@ -67,3 +67,6 @@ gem 'devise'
 #Cloundary Gem and Storage
 gem 'cloudinary', require: false
 gem 'activestorage-cloudinary-service'
+
+#Stripe Gem for payments
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'

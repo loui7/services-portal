@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'payments/new'
   devise_for :users
   root to: 'home#index'
   resources :services
