@@ -1,5 +1,5 @@
 <h1>New Proposal</h1>
-<%= form_for @proposal do |form| %>
+<%= form_for [@service, @proposal] do |form| %>
     <%= form.hidden_field :service_id, value: @service.id %>
     <p><%= form.label :price %>
     <%= form.number_field :price, required: "required" %></p>
@@ -9,4 +9,4 @@
 
     <%= form.submit "Submit" %>
 <% end %>
-<%= button_to "Cancel", proposals_path, method: :get %>
+<%= button_to "Cancel", service_path(@service.id), method: :get %>
