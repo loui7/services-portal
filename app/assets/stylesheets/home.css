@@ -53,6 +53,10 @@ a {
   width: 200px;
   height: 100%;
   overflow: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .sidenav a {
@@ -83,7 +87,6 @@ a {
 }
 
 .topnav a {
-  margin-left: 1em;
   color: white;
   text-decoration: none;
 }
