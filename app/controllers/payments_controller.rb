@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   def new
-    Stripe.api_key = 'YOUR_STRIPE_PRIVATE_TEST_KEY'
+    Stripe.api_key = 'pk_test_eZs5TCKkPQ8O8UH2JRNF7jJB006h1W7znS'
+
     @session = Stripe::Checkout::Session.create(
     payment_method_types: ['card'],
     line_items: [{
