@@ -72,12 +72,15 @@ ActiveRecord::Schema.define(version: 2019_07_24_051407) do
     t.string "surname"
     t.string "contact_number"
     t.text "address"
+    t.bigint "service_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["service_id"], name: "index_users_on_service_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "proposals", "services"
   add_foreign_key "proposals", "users"
   add_foreign_key "services", "users"
+  add_foreign_key "users", "services"
 end
