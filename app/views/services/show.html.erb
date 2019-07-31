@@ -1,6 +1,9 @@
 <h1><%= @service.title %></h1>
 <p><%= @service.location %></p>
 <p><%= @service.description %></p>
-<% if @service.user != current_user %>
+<% if @service.user == current_user %>
     <%= button_to "Remove" %>
+<% end %>
+<% if @service.user != current_user %>
+    <%= link_to 'Create Proposal', new_proposal_path(service_id: @service.id) %>
 <% end %>
