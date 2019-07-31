@@ -8,9 +8,9 @@ class PaymentsController < ApplicationController
     @session = Stripe::Checkout::Session.create(
     payment_method_types: ['card'],
     line_items: [{
-    name: @service.title,
-    description: 'placeholder',
-    amount: (2 * 100).to_i,
+    name: @proposal.user.fullname,
+    description: @service.title,
+    amount: (@proposal.price),
     currency: 'aud',
     quantity: 1,
     }],
