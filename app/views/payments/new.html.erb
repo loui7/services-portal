@@ -4,7 +4,7 @@
     <script src="https://js.stripe.com/v3/"></script>
 </button>
 <script>
-    var stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_TEST_KEY');
+    var stripe = Stripe('pk_test_ZgRDvv53P19xEqHnxaYy3A8Y00EipdpPEr');
     function redirectToStripe() {
     stripe.redirectToCheckout({
     sessionId: '<%= @session.id %>'
