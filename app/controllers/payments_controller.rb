@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @service = Service.find(params[:service_id])
     @proposal = Proposal.find(params[:proposal_id])

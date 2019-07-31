@@ -1,4 +1,6 @@
 class ServicesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @services = Service.where(completed_on: nil).where.not(user: current_user)
   end
