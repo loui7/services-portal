@@ -11,4 +11,9 @@ class User < ApplicationRecord
 
   has_many :services
   has_many :proposals
+
+  def fullname
+    return "#{name} #{surname}"
+  end
 end
+
