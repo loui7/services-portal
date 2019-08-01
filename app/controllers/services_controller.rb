@@ -35,7 +35,7 @@ class ServicesController < ApplicationController
   end
 
   def update
-    service = Service.find(params[:service][:id])
+    service = Service.find(params[:id])
     service.title = params[:service][:title]
     service.description = params[:service][:description]
     service.location = params[:service][:location]
