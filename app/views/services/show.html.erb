@@ -26,6 +26,7 @@
             <h2>Proposals</h2>
             <% @service.proposals.each do |proposal| %>
                 <% if proposal != @my_proposal %>
+                    <hr>
                     <h3><%= proposal.user.name %></h3>
                     <p>Offering <%= number_to_currency(proposal.price / 100.0, precision: 2) %></p>
                     <p>Notes:</p>
@@ -36,11 +37,18 @@
         <% end %>
     <% else %>
         <% if @my_proposal %>
+            <hr>
+            <h3>Your proposal</h3>
             <p>My proposal: <%= number_to_currency(@my_proposal.price / 100.0, precision: 2) %></p>
             <p>Notes:</p>
             <p><%= @my_proposal.notes %></p>
-            <%= link_to "Edit", edit_service_proposal_path(@service.id) %>
-            <%= link_to "Withdraw", service_proposal_path(@service.id), method: :delete, data: {confirm: "Are you sure? This action cannot be undone."} %>
+            <% if @my_proposal.accepted == true %>
+                <p>Your proposal has been accepted!</p>
+            <% else %>
+                <p><%= "Your proposal " + (@my_proposal.accepted == false ? "has been rejected" : "is pending approval") %></p>
+                <%= link_to "Edit", edit_service_proposal_path(@service.id) %>
+                <%= link_to "Withdraw", service_proposal_path(@service.id), method: :delete, data: {confirm: "Are you sure? This action cannot be undone."} %>
+            <% end %>
         <% else %>
             <%= link_to "Make a proposal", new_service_proposal_path(@service.id) %>
         <% end %>

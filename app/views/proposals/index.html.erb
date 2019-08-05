@@ -1,7 +1,7 @@
 <% unless @services_with_proposals.empty? %>
   <h2>Proposals to Review</h2>
   <% @services_with_proposals.each do |service| %>
-    <h3><%= service[:name] %></h3>
+    <h3><%= link_to service[:name] %></h3>
     <ul>
     <% service[:proposals].each do |proposal| %>
         <li>
