@@ -2,7 +2,7 @@
   <h3>For: <%=@service.user.fullname%></h3>
     <p>Job: <%=@service.title%></p>
     <p>by: <%=@proposal.user.fullname%></p>
-    <p>price: <%=@proposal.price / 100.0%></p>
+    <p>price: $<%=@proposal.price / 100.0%></p>
 <button id="pay-now">Pay now
     <script src="https://js.stripe.com/v3/"></script>
 </button>

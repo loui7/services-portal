@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'services/:id/mark_complete', to: 'services#complete_service', as: 'complete_service'
   patch 'services/:service_id/proposals/:id/accept', to: 'proposals#accept', as: 'accept_proposal'
   get 'proposals', to: 'proposals#index', as: 'proposals'
+  get 'services/:service_id/proposals/:proposal_id/payment/success', to: 'services#job_paid'
   devise_for :users
   root to: 'home#index'
   resources :services do
