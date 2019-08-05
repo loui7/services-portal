@@ -23,8 +23,8 @@
             <p>My proposal: <%= number_to_currency(@my_proposal.price / 100.0, precision: 2) %></p>
             <p>Notes:</p>
             <p><%= @my_proposal.notes %></p>
-            <%= link_to "Edit" %>
-            <%= link_to "Withdraw" %>
+            <%= link_to "Edit", edit_service_proposal_path(@service.id) %>
+            <%= link_to "Withdraw", service_proposal_path(@service.id), method: :delete, data: {confirm: "Are you sure? This action cannot be undone."} %>
         <% else %>
             <%= link_to "Make a proposal", new_service_proposal_path(@service.id) %>
         <% end %>

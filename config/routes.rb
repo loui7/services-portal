@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
   resources :services do
-    resources :proposals, only: [:new, :create, :edit, :update] do
+    resources :proposals, only: [:new, :create, :edit, :update, :destroy] do
       resources :payments, only: [:new]
     end
   end

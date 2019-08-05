@@ -36,4 +36,29 @@ class ProposalsController < ApplicationController
       render 'new'
     end
   end
+
+  def edit
+    @proposal = Proposal.find(params[:id])
+    @service = Service.find(params[:service_id])
+  end
+
+  def update
+    proposal = Proposal.find(params[:id])
+    price = ((params[:proposal][:price].to_f) * 100).to_i
+    proposal.price = price
+    proposal.notes = params[:proposal][:notes]
+
+    if proposal.save
+      redirect_to service_path(proposal.service.id)
+    else
+      flash[:alert] = service.errors.full_messages[0]
+      render 'edit'
+    end
+  end
+
+  def destroy
+    proposal = Proposal.find(params[:id])
+    proposal.destroy
+    redirect_to service_path(params[:service_id])
+  end
 end
