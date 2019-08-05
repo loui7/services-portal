@@ -2,8 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: transparent;
-  background-image: url("banner.png");
+  background-color: #205d80;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
