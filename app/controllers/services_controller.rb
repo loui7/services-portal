@@ -16,7 +16,7 @@ class ServicesController < ApplicationController
     service.description = params[:service][:description]
     service.location = params[:service][:location]
     if service.save
-      flash[:alert] = "Your service has been posted"
+      flash[:alert] = "Your service has been posted" 
       redirect_to services_path
     else
       flash[:alert] = service.errors.full_messages[0]
@@ -33,11 +33,11 @@ class ServicesController < ApplicationController
   end
 
   def edit
-    @service = Service.find(params[:id])
+    @service = Service.find(params[:service][:id])
   end
 
   def update
-    service = Service.find(params[:service][:id])
+    service = Service.find(params[:id])
     service.title = params[:service][:title]
     service.description = params[:service][:description]
     service.location = params[:service][:location]
