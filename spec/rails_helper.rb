@@ -62,4 +62,7 @@ RSpec.configure do |config|
   #include Devise controller helper for testing
   config.include Devise::Test::ControllerHelpers, type: :controller
 
+  #include Devise view helper for testing
+  config.include Devise::Test::ControllerHelpers, type: :view
+
 end
