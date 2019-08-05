@@ -27,8 +27,11 @@ class ServicesController < ApplicationController
   def show
     @service = Service.find(params[:id])
     @my_proposal = nil
+    @accepted_proposal = nil
     if @service.user != current_user
       @my_proposal = Proposal.where(user: current_user, service: @service).first
+    else
+      @accepted_proposal = Proposal.where(accepted: true).first
     end
   end
 
@@ -59,5 +62,17 @@ class ServicesController < ApplicationController
 
   def my_services
     @services = Service.where(user: current_user)
+  end
+
+  def complete_service
+    service = Service.find(params[:id])
+    service.completed_on = DateTime.now
+    if service.save
+      flash[:alert] = "Job #{service.title} has been completed"
+      redirect_to service_path(service.id)
+    else
+      flash[:alert] = service.errors.full_messages[0]
+      redirect_to service_path(service.id)
+    end
   end
 end

@@ -61,4 +61,24 @@ class ProposalsController < ApplicationController
     proposal.destroy
     redirect_to service_path(params[:service_id])
   end
+
+  def accept
+    # region Subject to refactoring
+    # Marking all other pending proposals as rejected - logic may move to services_controller or Service model
+      Proposal.where(accepted: nil).where.not(id: params[:id]).each { |p|
+        p.accepted = false
+        p.save
+      }
+    #endregion
+
+    proposal = Proposal.find(params[:id])
+    proposal.accepted = true
+    if proposal.save
+      flash[:alert] = "#{proposal.user.name}'s proposal has been accepted"
+      redirect_to service_path(proposal.service.id)
+    else
+      flash[:alert] = service.errors.full_messages[0]
+      render 'show'
+    end
+  end
 end
