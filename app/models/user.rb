@@ -9,6 +9,11 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :email, presence: true
 
-  has_many :services
-  has_many :proposals
+  has_many :services, dependent: :destroy
+  has_many :proposals, dependent: :destroy
+
+  def fullname
+    return "#{name} #{surname}"
+  end
 end
+
