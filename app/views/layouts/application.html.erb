@@ -13,9 +13,11 @@
   <div>
     <%= render "shared/topnav"%>
   </div>
-  <div class="sidenav">
-     <%= render "shared/sidenav"%>
-  </div>
+  <% if user_signed_in? %>
+    <div class="sidenav">
+      <%= render "shared/sidenav"%>
+    </div>
+  <% end %>
 
   <section class="page">
     <p class="notice"><%= notice %></p>
