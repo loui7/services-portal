@@ -1,4 +1,6 @@
 class ServicesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @services = Service.where(completed_on: nil).where.not(user: current_user)
   end
@@ -25,7 +27,7 @@ class ServicesController < ApplicationController
   def show
     @service = Service.find(params[:id])
     @my_proposal = nil
-    if @service.user == current_user
+    if @service.user != current_user
       @my_proposal = Proposal.where(user: current_user, service: @service).first
     end
   end

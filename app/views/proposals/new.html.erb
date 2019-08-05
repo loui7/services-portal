@@ -1,8 +1,7 @@
 <h1>New Proposal</h1>
 <%= form_for [@service, @proposal] do |form| %>
-    <%= form.hidden_field :service_id, value: @service.id %>
     <p><%= form.label :price %>
-    <%= form.number_field :price, required: "required" %></p>
+    <%= form.number_field :price, required: "required", step: 0.01 %></p>
 
     <p><%= form.label :notes %>
     <%= form.text_area :notes, placeholder: "Enter proposal notes." %></p>

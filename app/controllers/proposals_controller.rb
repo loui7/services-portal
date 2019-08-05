@@ -21,9 +21,10 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    service = Service.find(params[:proposal][:service_id])
+    service = Service.find(params[:service_id])
+    price = ((params[:proposal][:price].to_f) * 100).to_i
     proposal = service.proposals.new(
-      price: params[:proposal][:price],
+      price: price,
       user: current_user,
       notes: params[:proposal][:notes]
     )

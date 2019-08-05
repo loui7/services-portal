@@ -6,7 +6,7 @@
     <% service[:proposals].each do |proposal| %>
         <li>
           Name: <%= proposal.user.name %><br/>
-          Price: <%= proposal.price %>
+          Price: <%= number_to_currency(proposal.price / 100.0) %>
         </li>
 
     <% end %>
@@ -20,7 +20,7 @@
     <% @submitted_proposals.each do |proposal| %>
       <li>
         Service: <%= proposal.service.title %><br/>
-        Price: <%= proposal.price %>
+        Price: <%= number_to_currency(proposal.price / 100.0) %>
       </li>
     <% end %>
   </ul>
