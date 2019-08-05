@@ -74,6 +74,23 @@ class ServicesController < ApplicationController
     @services = Service.where(user: current_user)
   end
 
+  def accept_proposal
+    Proposal.where(accepted: nil).where.not(id: params[:id]).each { |p|
+      p.accepted = false
+      p.save
+    }
+
+    proposal = Proposal.find(params[:id])
+    proposal.accepted = true
+    if proposal.save
+      flash[:alert] = "#{proposal.user.name}'s proposal has been accepted"
+      redirect_to service_path(proposal.service.id)
+    else
+      flash[:alert] = service.errors.full_messages[0]
+      render 'show'
+    end
+  end
+
   def complete_service
     service = Service.find(params[:id])
     service.completed_on = DateTime.now
