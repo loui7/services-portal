@@ -36,4 +36,49 @@ class ProposalsController < ApplicationController
       render 'new'
     end
   end
+
+  def edit
+    @proposal = Proposal.find(params[:id])
+    @service = Service.find(params[:service_id])
+  end
+
+  def update
+    proposal = Proposal.find(params[:id])
+    price = ((params[:proposal][:price].to_f) * 100).to_i
+    proposal.price = price
+    proposal.notes = params[:proposal][:notes]
+
+    if proposal.save
+      redirect_to service_path(proposal.service.id)
+    else
+      flash[:alert] = service.errors.full_messages[0]
+      render 'edit'
+    end
+  end
+
+  def destroy
+    proposal = Proposal.find(params[:id])
+    proposal.destroy
+    redirect_to service_path(params[:service_id])
+  end
+
+  def accept
+    # region Subject to refactoring
+    # Marking all other pending proposals as rejected - logic may move to services_controller or Service model
+      Proposal.where(accepted: nil).where.not(id: params[:id]).each { |p|
+        p.accepted = false
+        p.save
+      }
+    #endregion
+
+    proposal = Proposal.find(params[:id])
+    proposal.accepted = true
+    if proposal.save
+      flash[:alert] = "#{proposal.user.name}'s proposal has been accepted"
+      redirect_to service_path(proposal.service.id)
+    else
+      flash[:alert] = service.errors.full_messages[0]
+      render 'show'
+    end
+  end
 end

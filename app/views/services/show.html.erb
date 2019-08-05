@@ -6,25 +6,49 @@
 <p>Average proposal: <%= number_to_currency(@service.average_proposal / 100.0) %></p>
 <% if user_signed_in? %>
     <% if @service.user == current_user %>
-        <%= link_to "Edit", edit_service_path(@service.id) %>
-        <%= link_to "Remove", service_path(@service.id), method: :delete, data: { confirm: "Are you sure?" } %>
-        <h2>Proposals</h2>
-        <% @service.proposals.each do |proposal| %>
-            <% if proposal != @my_proposal %>
-                <h3><%= proposal.user.name %></h3>
-                <p>Offering <%= number_to_currency(proposal.price / 100.0, precision: 2) %></p>
-                <p>Notes:</p>
-                <p><%= proposal.notes %></p>
-                <%= link_to "Accept this proposal" %>
+        <% if @accepted_proposal %>
+            <h2>Accepted Proposal</h2>
+            <h3><%= @accepted_proposal.user.name %></h3>
+            <p>Offering <%= number_to_currency(@accepted_proposal.price / 100.0, precision: 2) %></p>
+            <p>Notes:</p>
+            <p><%= @accepted_proposal.notes %></p>
+            <% if @service.completed_on == nil%>
+                <%= link_to "Mark job complete", complete_service_path %>
+            <% else %>
+                <p>Completed on: <%= @service.completed_on.to_date %></p>
+                <% if @service.paid_on == nil %>
+                    <%= link_to "Pay #{@accepted_proposal.user.name}", new_service_proposal_payment_path(@service.id, @accepted_proposal.id) %>
+                <% end %>
+            <% end %>
+        <% else %>
+            <%= link_to "Edit", edit_service_path(@service.id) %>
+            <%= link_to "Remove", service_path(@service.id), method: :delete, data: { confirm: "Are you sure?" } %>
+            <h2>Proposals</h2>
+            <% @service.proposals.each do |proposal| %>
+                <% if proposal != @my_proposal %>
+                    <hr>
+                    <h3><%= proposal.user.name %></h3>
+                    <p>Offering <%= number_to_currency(proposal.price / 100.0, precision: 2) %></p>
+                    <p>Notes:</p>
+                    <p><%= proposal.notes %></p>
+                    <%= link_to "Accept this proposal", accept_proposal_path(@service.id, proposal.id), method: :patch %>
+                <% end %>
             <% end %>
         <% end %>
     <% else %>
         <% if @my_proposal %>
+            <hr>
+            <h3>Your proposal</h3>
             <p>My proposal: <%= number_to_currency(@my_proposal.price / 100.0, precision: 2) %></p>
             <p>Notes:</p>
             <p><%= @my_proposal.notes %></p>
-            <%= link_to "Edit" %>
-            <%= link_to "Withdraw" %>
+            <% if @my_proposal.accepted == true %>
+                <p>Your proposal has been accepted!</p>
+            <% else %>
+                <p><%= "Your proposal " + (@my_proposal.accepted == false ? "has been rejected" : "is pending approval") %></p>
+                <%= link_to "Edit", edit_service_proposal_path(@service.id) %>
+                <%= link_to "Withdraw", service_proposal_path(@service.id), method: :delete, data: {confirm: "Are you sure? This action cannot be undone."} %>
+            <% end %>
         <% else %>
             <%= link_to "Make a proposal", new_service_proposal_path(@service.id) %>
         <% end %>
