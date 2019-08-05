@@ -31,7 +31,7 @@ class ServicesController < ApplicationController
     if @service.user != current_user
       @my_proposal = Proposal.where(user: current_user, service: @service).first
     else
-      @accepted_proposal = Proposal.where(accepted: true).first
+      @accepted_proposal = Proposal.where(service: @service, accepted: true).first
     end
   end
 
@@ -41,6 +41,11 @@ class ServicesController < ApplicationController
 
   def update
     service = Service.find(params[:id])
+    # Cancel destruction if accepted proposal exists
+    if Proposal.where(service: service, accepted: true).count > 0
+      flash[:alert] = "Can't modify a service after accepting a proposal"
+      redirect_to service_path(service.id)
+    end
     service.title = params[:service][:title]
     service.description = params[:service][:description]
     service.location = params[:service][:location]
@@ -55,6 +60,11 @@ class ServicesController < ApplicationController
 
   def destroy
     service = Service.find(params[:id])
+    # Cancel destruction if accepted proposal exists
+    if Proposal.where(service: service, accepted: true).count > 0
+      flash[:alert] = "Can't remove a service after accepting a proposal"
+      redirect_to service_path(service.id)
+    end
     service.destroy
     flash[:alert] = "Job #{service.title} has been removed"
     redirect_to services_path
