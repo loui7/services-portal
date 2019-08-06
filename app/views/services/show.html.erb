@@ -29,6 +29,20 @@
                 <% if proposal != @my_proposal %>
                     <hr>
                     <h3><%= proposal.user.name %></h3>
+                        <p><% unless proposal.user.ratings_qty === 0 %>
+                                <% (proposal.user.ratings_avg.to_i).times do %>
+                                    <span>&#9733;</span>
+                                <% end %>
+                                <% (5 - proposal.user.ratings_avg.to_i).times do %>
+                                    <span>&#9734;</span> 
+                                <% end %>
+                                <br />
+                                (Averaged from <%= proposal.user.ratings_qty %> ratings)
+                                </p>
+                            <% else %>
+                                User has not yet recieved any ratings.
+                            <% end %>
+
                     <p>Offering <%= number_to_currency(proposal.price / 100.0, precision: 2) %></p>
                     <p>Notes:</p>
                     <p><%= proposal.notes %></p>
