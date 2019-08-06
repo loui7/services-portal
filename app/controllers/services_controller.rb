@@ -85,4 +85,10 @@ class ServicesController < ApplicationController
       redirect_to service_path(service.id)
     end
   end
+
+  def job_paid
+    service = Service.find(params[:service_id])
+    service.paid_on = DateTime.now
+    service.save
+  end
 end
