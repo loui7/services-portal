@@ -10,22 +10,21 @@
   </head>
 
   <body>
-  <div>
-    <%= render "shared/topnav"%>
-  </div>
-  <% if user_signed_in? %>
-    <div class="sidenav">
-      <%= render "shared/sidenav"%>
-    </div>
-  <% end %>
-
-  <section class="page">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
     <div>
-    <%= yield %>
+      <%= render "shared/topnav"%>
     </div>
+    <% if user_signed_in? %>
+      <div class="sidenav">
+        <%= render "shared/sidenav"%>
+      </div>
+    <% end %>
+
+    <section class="page">
+      <div>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
     </section>
   </body>
 </html>

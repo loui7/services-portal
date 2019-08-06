@@ -5,13 +5,13 @@
     background-color: $nav-bg-color;
     display: flex;
     position: fixed;
-    width: 200px;
+    width: 300px;
     height: 100%;
     overflow:auto;
     flex-direction: column;
    
     a {
-        margin-left:1em;
+        margin-left: 1em;
         color: $main-font-color;
         text-decoration: none;
         &:hover, :active, :visited {
