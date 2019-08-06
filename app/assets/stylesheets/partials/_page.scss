@@ -8,24 +8,42 @@ body {
     height: 100vh;
     image-rendering: auto;
     @include font-settings;
-    text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5)
-   
-  
-   
-
+    text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5);
+    font-size: 26px;
 }
 
 .page {
      @include flex-center;
-     width: 100vw;
+     width: 100%;
+     div {
+         width: 800px;
+     }
+     .notice, .alert {
+         flex-basis: 100%;
+     }
 }
 
 .heading {
     font-family: $header-font;
-  
-
 }
 
 a {
+    margin: 10px 0px;
+    font-size: 24px;
+    color: $main-font-color;
     text-shadow: none;
+}
+
+h2 {
+    margin: 10px 0px;
+    font-size: 24px;
+}
+
+p {
+    font-size: 20px;
+    margin: 10px 0px;
+}
+
+hr {
+    margin: 40px 0px;
 }
