@@ -1,1 +1,8 @@
-<p>Job paid</p>
+<h4>Job paid!</h4>
+<p>Please rate your worker:</p>
+
+<%= form_with url: add_review_url(@user_worker), method: 'patch' do |form| %>
+  <%= form.label :rating %>
+  <p>1<%= form.range_field :rating, :in => 1..5, :step => 1 %>5</p>
+  <%= form.submit "Submit" %>
+<% end %>
