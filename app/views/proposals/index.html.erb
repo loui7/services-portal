@@ -1,31 +1,42 @@
-<% unless @services_with_proposals.empty? %>
-  <h2>Proposals to Review</h2>
-  <% @services_with_proposals.each do |service| %>
-    <h3><%= link_to service[:name] %></h3>
-    <ul>
-    <% service[:proposals].each do |proposal| %>
-        <li>
-          Name: <%= proposal.user.name %><br/>
-          Price: <%= number_to_currency(proposal.price / 100.0) %>
-        </li>
-
+<h1>Accepted Proposals</h1>
+<% @accepted_proposals.each do |proposal| %>
+  <hr>
+  <h3><%= link_to proposal.service.title, service_path(proposal.service.id) %>
+  <p>Posted by <%= proposal.user.fullname %></p></h3>
+  <p><%= proposal.notes %></p>
+  <% if proposal.service.completed_on %>
+    <% if proposal.service.paid_on %>
+      <p>Job completed and paid!</p>
+    <% else %>
+      <p>Awaiting payment</p>
     <% end %>
-    </ul>
+  <% else %>
+    <p>Awaiting completion of service</p>
   <% end %>
 <% end %>
 
-<% unless @submitted_proposals.empty? %>
-  <h2>Your proposals</h2>
-  <ul>
-    <% @submitted_proposals.each do |proposal| %>
-      <li>
-        Service: <%= proposal.service.title %><br/>
-        Price: <%= number_to_currency(proposal.price / 100.0) %>
-      </li>
-    <% end %>
-  </ul>
+<hr>
+<h1>Pending Proposals</h1>
+<% @pending_proposals.each do |proposal| %>
+  <hr>
+  <h3><%= link_to proposal.service.title, service_path(proposal.service.id) %>
+  <p>Posted by <%= proposal.user.fullname %></p></h3>
+  <p><%= number_to_currency(proposal.price / 100.0) %></p>
+  <p><%= proposal.notes %></p>
+  <p><%= link_to "Edit", edit_service_proposal_path(proposal.service.id, proposal.id) %> 
+    <%= link_to "Withdraw",
+    service_proposal_path(proposal.service.id, proposal.id),
+    method: :delete,
+    data: {confirm: "Are you sure? This action cannot be undone"} %></p>
 <% end %>
 
-<% if @services_with_proposals.empty? && @submitted_proposals.empty? %>
-  <h3>No proposals found associated with this account.</h3>
+<hr>
+<h1>Rejected Proposals</h1>
+<% @rejected_proposals.each do |proposal| %>
+  <hr>
+  <h3><%= link_to proposal.service.title, service_path(proposal.service.id) %>
+  <p>Posted by <%= proposal.user.fullname %></p></h3>
+  <p><%= number_to_currency(proposal.price / 100.0) %></p>
+  <p><%= proposal.notes %></p>
+  <p><%= link_to "Dismiss", service_proposal_path(proposal.service.id, proposal.id), method: :delete %></p>
 <% end %>
