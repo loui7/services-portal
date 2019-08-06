@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   patch 'services/:service_id/proposals/:id/accept', to: 'services#accept_proposal', as: 'accept_proposal'
   get 'proposals', to: 'proposals#index', as: 'proposals'
   get 'services/:service_id/proposals/:proposal_id/payment/success', to: 'services#job_paid'
+  patch 'users/:user_id/add_review', to: 'users#add_review', as: 'add_review'
   devise_for :users
   root to: 'home#index'
   resources :services do

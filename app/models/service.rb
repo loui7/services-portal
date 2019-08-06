@@ -16,4 +16,8 @@ class Service < ApplicationRecord
         proposals.each { |p| return false if p.accepted == true }
         return true
     end
+
+    def accepted_proposal
+        return proposals.where(accepted: true)[0]
+    end
 end
