@@ -48,6 +48,7 @@ RSpec.describe ServicesController, type: :controller do
   describe "GET #index" do
     it "returns a success response" do
       Service.create! valid_attributes
+      sign_in user
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
     end
@@ -56,6 +57,7 @@ RSpec.describe ServicesController, type: :controller do
   describe "GET #show" do
     it "returns a success response" do
       service = Service.create! valid_attributes
+      sign_in user
       get :show, params: {id: service.to_param}, session: valid_session
       expect(response).to be_successful
     end
@@ -63,6 +65,8 @@ RSpec.describe ServicesController, type: :controller do
 
   describe "GET #new" do
     it "returns a success response" do
+      user
+      sign_in user
       get :new, params: {}, session: valid_session
       expect(response).to be_successful
     end
@@ -71,14 +75,17 @@ RSpec.describe ServicesController, type: :controller do
   describe "GET #edit" do
     it "returns a success response - *** fails until we merge PR for update-service-fix ***" do
       service = Service.create! valid_attributes
+      sign_in user
       get :edit, params: {id: service.to_param}, session: valid_session
       expect(response).to be_successful
     end
   end
 
   describe "POST #create" do
+ 
     context "with valid params" do
       it "creates a new Service" do
+        user
         sign_in user
         expect {
           post :create, params: {service: valid_attributes}, session: valid_session
@@ -86,13 +93,17 @@ RSpec.describe ServicesController, type: :controller do
       end
 
       it "redirects to services path" do
+        user
+        sign_in user
         post :create, params: {service: valid_attributes}, session: valid_session
-        expect(response.status).to eq 200
+        expect(response.status).to redirect_to services_path
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
+        user
+        sign_in user
         post :create, params: {service: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
@@ -107,6 +118,7 @@ RSpec.describe ServicesController, type: :controller do
 
       it "updates the requested service" do
         service = Service.create! valid_attributes
+        sign_in user
         put :update, params: {id: service.to_param, service: new_attributes}, session: valid_session
         service.reload
         updated_service = Service.find(service.id)
@@ -115,6 +127,7 @@ RSpec.describe ServicesController, type: :controller do
 
       it "redirects to the service" do
         service = Service.create! valid_attributes
+        sign_in user
         put :update, params: {id: service.to_param, service: valid_attributes}, session: valid_session
         expect(response).to redirect_to(service)
       end
@@ -123,6 +136,7 @@ RSpec.describe ServicesController, type: :controller do
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
         service = Service.create! valid_attributes
+        sign_in user
         put :update, params: {id: service.to_param, service: invalid_attributes}, session: valid_session
         expect(response).to be_successful
       end
@@ -132,6 +146,7 @@ RSpec.describe ServicesController, type: :controller do
   describe "DELETE #destroy" do
     it "destroys the requested service" do
       service = Service.create! valid_attributes
+      sign_in user
       expect {
         delete :destroy, params: {id: service.to_param}, session: valid_session
       }.to change(Service, :count).by(-1)
@@ -139,6 +154,7 @@ RSpec.describe ServicesController, type: :controller do
 
     it "redirects to the services list" do
       service = Service.create! valid_attributes
+      sign_in user
       delete :destroy, params: {id: service.to_param}, session: valid_session
       expect(response).to redirect_to(services_url)
     end
