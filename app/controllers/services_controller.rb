@@ -15,6 +15,8 @@ class ServicesController < ApplicationController
     service.title = params[:service][:title]
     service.description = params[:service][:description]
     service.location = params[:service][:location]
+    service.image.purge()
+    service.image.attach(params[:service][:image])
     if service.save
       flash[:alert] = "Your service has been posted" 
       redirect_to services_path
