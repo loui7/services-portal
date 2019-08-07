@@ -1,7 +1,7 @@
 # Readme
 
 ## Links
-[App](placeholder)
+[App](https://better-services-portal.herokuapp.com/)
 [Repository](https://github.com/loui7/services-portal)
 
 ## Identify the problem you’re trying to solve by building this particular marketplace app, and why it is a problem that needs solving
@@ -117,13 +117,15 @@ We made use of Git/GitHub to manage our codebase. We made agreements on how we w
 Manual testing was used frequently, especially when reviewing another's pull request. Rspec tests were also defined.
 
 ## Discuss and analyse requirements related to information system security
-`Research needed`
+Using Devise for authentication and Cloudinary for image hosting takes much of the work related to security out of our hands. Still there is need to be wary of malicious users - the most prominent for us was that despite hiding buttons exposed to users, it is still possible to fire off requests to the server. This could result in undesirable behaviour, and can be circumvented by implementing checks at the controller and/or model level to ensure that the data being processed is indeed valid.
+
+Another security measure worth considering is the implementation of a positive or negative CAPTCHA in an effort to mitigate bot attacks. Given the nature of this as an assignment rather than a fully fledged project, it may be enough to implement only a negative CAPTCHA.
 
 ## Discuss methods you will use to protect information and data
-`Research needed for outside of Devise`
+Again with using Devise, there is much that is hidden from us as. One consideration is Rails logging, we may decide to implement parameter filtering in Rails logs. It is worth mentioning that research has yielded that the Devise gem will by default expire sessions on sign in and sign out, which is a countermeasure for session fixation.
 
 ## Research what your legal obligations are in relation to handling user data
-`Research needed`
+First and foremost we should have an accessible privacy policy. This would make clear our intentions for any user data, especially considering we do collect private phone numbers. Handing off payment processing to Stripe mitigates our responsibilities in this department, but shouldn't mitigate the care we take in handling what data we do collect. We should also consider ensuring that we encrypt any backups to ease compliance with "right to be forgotten" GDPR requirements should we deploy the solution globally.
 
 ## Discuss the database relations to be implemented
 * User - has many Services and Proposals
