@@ -66,6 +66,7 @@ class ServicesController < ApplicationController
     if Proposal.where(service: service, accepted: true).count > 0
       flash[:alert] = "Can't remove a service after accepting a proposal"
       redirect_to service_path(service.id)
+      return
     end
     service.destroy
     flash[:alert] = "Job #{service.title} has been removed"
