@@ -63,7 +63,7 @@ Heroku is a managed application hosting architecture service. That means they ha
 PostgreSQL. It was the only choice available as it's the only database we are all as a team familiar with.
 
 ## Identify and describe the production database setup (i.e. postgres instance)
-
+`Unsure as to what exactly this question is asking`
 
 ## Describe the architecture of your app
 ### Models/Tables
@@ -78,10 +78,10 @@ PostgreSQL. It was the only choice available as it's the only database we are al
 We opted to use a nested resources approach to maintain a sensible approach that reflected the relationships between services and proposals. This means that we enforce presence and naming for parameters required by controller actions.
 
 ## Explain the different high-level components (abstractions) in your app
-
+`Need to verify question - believe it may have been answered above`
 
 ## Describe (in general terms) the data structure of marketplace apps that are similar to your own (eBay, Airbnb)
-
+`Louis to provide answer`
 
 ## Provide user stories for your app
 * User
@@ -102,7 +102,7 @@ We opted to use a nested resources approach to maintain a sensible approach that
   * I can receive payment for providing a service
 
 ## Provide wireframes for your app
-
+`Need file uploads and can provide links`
 
 ## Describe the way tasks are being planned and tracked in your project
 We made use of Trello and verbally assigning tasks and agreeing on which parts of the app we would work on individually.
@@ -117,12 +117,13 @@ We made use of Git/GitHub to manage our codebase. We made agreements on how we w
 Manual testing was used frequently, especially when reviewing another's pull request. Rspec tests were also defined.
 
 ## Discuss and analyse requirements related to information system security
-
+`Research needed`
 
 ## Discuss methods you will use to protect information and data
-
+`Research needed for outside of Devise`
 
 ## Research what your legal obligations are in relation to handling user data
+`Research needed`
 
 ## Discuss the database relations to be implemented
 * User - has many Services and Proposals
