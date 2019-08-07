@@ -18,6 +18,6 @@ class Service < ApplicationRecord
     end
 
     def accepted_proposal
-        return proposals.where(accepted: true)[0]
+        return proposals.where(accepted: true).first
     end
 end
