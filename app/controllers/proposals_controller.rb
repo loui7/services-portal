@@ -21,7 +21,7 @@ class ProposalsController < ApplicationController
       notes: params[:proposal][:notes]
     )
     if proposal.save
-      flash[:alert] = "Your service has been posted"
+      flash[:alert] = "Your proposal has successfully be submitted."
       redirect_to proposals_path
     else
       flash[:alert] = service.errors.full_messages[0]

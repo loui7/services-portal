@@ -1,7 +1,7 @@
 <h1>Edit Proposal</h1>
 <%= form_for [@service, @proposal] do |form| %>
     <p><%= form.label :price %>
-    <%= form.number_field :price, required: "required", step: 0.01, value: (@proposal.price / 100.0) %></p>
+    <%= form.number_field :price, required: "required", step: 0.01, value: (@proposal.price / 100.0), min: 5 %></p>
 
     <p><%= form.label :notes %>
     <%= form.text_area :notes, value: @proposal.notes %></p>
