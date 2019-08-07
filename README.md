@@ -89,6 +89,8 @@ We opted to use a nested resources approach to maintain a sensible approach that
 * Service Owner
   * I can request a service and provide details about that service
   * I can modify a service's details or remove the service request so long as I haven't yet accepted a proposal
+  * I can peruse proposals made to my service and view the proposal owner's rating and proposal details
+  * I can accept another user's proposal
   * I can mark a service as having been completed
   * I can pay the person who provided the service
   * I can leave a rating for the person who provided the service
@@ -96,6 +98,7 @@ We opted to use a nested resources approach to maintain a sensible approach that
 * Service Provider
   * I can browse existing job requests that are accepting proposals
   * I can make, edit or remove a proposal, so long as it hasn't been either accepted or rejected
+  * I can see the number of proposals on a job and the average proposal value, in order to make a competitive offer
   * I can receive payment for providing a service
 
 ## Provide wireframes for your app
@@ -105,7 +108,7 @@ We opted to use a nested resources approach to maintain a sensible approach that
 We made use of Trello and verbally assigning tasks and agreeing on which parts of the app we would work on individually.
 
 ## Discuss how agile methodology is being implemented in your app
-
+Daily discussions where applicable and use of Trello to organise individual work. Given the lack of clients, a good portion of agile methodology was rendered moot, as project specifications were never going to be subject to change.
 
 ## Provide an overview and description of your source control process
 We made use of Git/GitHub to manage our codebase. We made agreements on how we would use the platform as a team (merging master rather than rebasing) and ensuring that we sought approval for pull requests before merging. We also agreed that the person making the pull request be responsible for merging their work into master.
@@ -121,22 +124,7 @@ Manual testing was used frequently, especially when reviewing another's pull req
 
 ## Research what your legal obligations are in relation to handling user data
 
-
-## 1- Documentation describes relational database model and database infrastructure
-## 1- Design a schema appropriate for relational databases
-## 2- Provide your database schema design
-## 2- ERD provided represents a normalised database model
-## 3- Identify entities which must be tracked by the application
-## 3- Database design appropriately addresses the requirements of a complex scenario
-## 4- Discuss the database relations to be implemented
-## 4- Identify relationships / associations between entities
-## 5- Describe your project’s models in terms of the relationships (active record associations) they have with each other
-## 1- Model implementation represents a normalised database model
-## 1- Relationships are correctly defined as ActiveRecord associations to reflect understanding of the desired database structure
-## 1- Identify and use appropriate model methods
-## 2a- Implemented controllers demonstrate correct use of commands to query the database infrastructure
-## 2a- Queries implemented provide correct data for the given scenario
-## 2b- Implementation of data operations demonstrate an understanding of the relational database model used
-## 2b- Minimising database calls needed to perform an action
-## 3- Code comments demonstrate how the queries implemented correctly represent the database structure
-## Sanitise and validates input to maintain data integrity
+## Discuss the database relations to be implemented
+* User - has many Services and Proposals
+* Service - belongs to User. Has many Proposals
+* Proposal - belongs to both a User and a Service
