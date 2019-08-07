@@ -1,8 +1,8 @@
 # Readme
 
 ## Links
-[App](https://better-services-portal.herokuapp.com/)
-[Repository](https://github.com/loui7/services-portal)
+* [App](https://better-services-portal.herokuapp.com/)
+* [Repository](https://github.com/loui7/services-portal)
 
 ## Identify the problem you’re trying to solve by building this particular marketplace app, and why it is a problem that needs solving
 The ‘gig economy’ has rapidly grown in recent years as technology has enabled people to directly connect with each other and exchange their services. This growth is driven by the efficiency that cutting out the middleman by automating it with technology allows. Services Portal will use technology in this way specifically to connect businesses with short term jobs and the workers who want to complete them.
