@@ -38,7 +38,7 @@ class ServicesController < ApplicationController
   end
 
   def edit
-    @service = Service.find(params[:service][:id])
+    @service = Service.find(params[:id])
   end
 
   def update
