@@ -9,7 +9,7 @@ The ‘gig economy’ has rapidly grown in recent years as technology has enable
 
 Other marketplaces for short term jobs that currently exist and are particularly popular like craigslist and gumtree don’t have review systems which directly demonstrate the legitimacy of a participant in a transaction.
 
-Services Portal would have such a ratings system, incentivising workers to do the best job they can so they’ll be picked for more jobs in the future, and providers to treat the workers well so more workers will bid on their jobs in the future.
+Services Portal has such a ratings system, incentivising workers to do the best job they can so they’ll be picked for more jobs in the future.
 
 ## Describe the network infrastructure the app may be based on
 Heroku is a managed application hosting architecture service. That means they handle all of the physical hardware set-up and basic operating system management. In the case of Heroku, they have on their servers a lot of small virtual servers called ‘dynos’. When you create a project on Heroku is is assigned one of these virtual servers and that is where your application runs and where requests sent to your application URL will be routed.
@@ -62,8 +62,6 @@ Heroku is a managed application hosting architecture service. That means they ha
 ## Identify the database to be used in your app and provide a justification for your choice
 PostgreSQL. It was the only choice available as it's the only database we are all as a team familiar with.
 
-## Identify and describe the production database setup (i.e. postgres instance)
-`Unsure as to what exactly this question is asking`
 
 ## Describe the architecture of your app
 ### Models/Tables
@@ -77,11 +75,8 @@ PostgreSQL. It was the only choice available as it's the only database we are al
 ### Routes
 We opted to use a nested resources approach to maintain a sensible approach that reflected the relationships between services and proposals. This means that we enforce presence and naming for parameters required by controller actions.
 
-## Explain the different high-level components (abstractions) in your app
-`Need to verify question - believe it may have been answered above`
-
-## Describe (in general terms) the data structure of marketplace apps that are similar to your own (eBay, Airbnb)
-`Louis to provide answer`
+## Describe (in general terms) the data structure of marketplace apps that are similar to your own.
+The most similar app to ours would be Airtasker. Their data structure is very similar to our own, where users can put up advertisements for jobs they want completed, and other users can bid on those jobs. They also have added complexity where the poster of a job advertisement can set a budget for the job.
 
 ## Provide user stories for your app
 * User
@@ -101,14 +96,31 @@ We opted to use a nested resources approach to maintain a sensible approach that
   * I can see the number of proposals on a job and the average proposal value, in order to make a competitive offer
   * I can receive payment for providing a service
 
+## Explain the different high-level components in your app
+High Level Components
+![High Level Components](images/different-highlevel-components.png)
+
+Devise Components
+![Devise Components](images/devise-highlevel-components.png)
+
 ## Provide wireframes for your app
-`Need file uploads and can provide links`
+Navigation Wireframe
+![Navigation Wireframe](images/Navigation-wireframes.png)
+
+Service Wireframe
+![Service Wireframe](images/Service-Views.png)
+
+Proposal View
+![Proposal View](images/Proposal-views.png)
 
 ## Describe the way tasks are being planned and tracked in your project
 We made use of Trello and verbally assigning tasks and agreeing on which parts of the app we would work on individually.
 
 ## Discuss how agile methodology is being implemented in your app
 Daily discussions where applicable and use of Trello to organise individual work. Given the lack of clients, a good portion of agile methodology was rendered moot, as project specifications were never going to be subject to change.
+
+Trello Screenshot
+![Trello Screenshot](images/trello.png)
 
 ## Provide an overview and description of your source control process
 We made use of Git/GitHub to manage our codebase. We made agreements on how we would use the platform as a team (merging master rather than rebasing) and ensuring that we sought approval for pull requests before merging. We also agreed that the person making the pull request be responsible for merging their work into master.
