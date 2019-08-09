@@ -60,7 +60,15 @@ Heroku is a managed application hosting architecture service. That means they ha
   * I have come to understand that rspec is extensively used by programmers to test their ruby code or applications written in ruby on rails.
 
 ## Identify the database to be used in your app and provide a justification for your choice
-PostgreSQL. It was the only choice available as it's the only database we are all as a team familiar with.
+We chose to use PostgreSQL as the database for this project because it's performance and advanced features mean that no matter how much data our service ends up passing through it and complicated operations we want to perform, it would remain the best database choice just with some modifications.
+
+The other main database technologies we considered using are SQLite & MySQL.
+
+SQLites functionality might be adequate for an Minimum Viable Product, but it is not designed for larger and more complicated datasets so it is likely we would need to change at some point were Services Portal to gain a sizeable user base.
+
+MySQL would have been a fine choice for this project, as it for the most part has the same functionality as PostgreSQL. However, it does have slightly fewer features than PostgreSQL, especially on the free tier (as they also offer paid licences). Development on it has also slowed down in recent years compared to PostgreSQL.
+
+PostgreSQL also did recieve some preferential treatment simply because it's the only database we are all as a team familiar with.
 
 
 ## Describe the architecture of your app
