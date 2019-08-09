@@ -119,6 +119,26 @@ We made use of Trello and verbally assigning tasks and agreeing on which parts o
 ## Discuss how agile methodology is being implemented in your app
 Daily discussions where applicable and use of Trello to organise individual work. Given the lack of clients, a good portion of agile methodology was rendered moot, as project specifications were never going to be subject to change.
 
+For this project Isaac, Louis and Vic are both the client and designers of Services Portal.  In our discussions, options for our project all boiled down to a services platform of one kind or another.  We quickly decided on general service platform and not a specific service platform, like Puppy Pal or Formal Dress Service.  This brought simplicity, broaden our scope, would appeal to a broader market, and gave us, a clear direction to move forward.  
+
+In the Design process, once we had the clear brief and approval of our App we talked about and wrote User Stories using Trello.  We quickly decided on our MVP and what might be for future iterations.  Our User stories and what a user could do only improved functionality and what a user could do over the time of the project.  The User stories lead to creating job cards and breaking up of work.  Some of our jobs cards where broken down further into small chunks of work.  
+
+In our Design process we created User Stories, and ERD diagram for the database table we thought we needed and the data we needed to keep in each table.  Creating the ERD quickly showed that the User table and the Proposals table were both linked through the Services table. This lead to working our relationships between tables. We develop wireframes that show cased what was needed in our top nav (user interaction), a side nav (appearing once a user in signed in) and what user interaction would be available on what pages and through which user interactions (cascading menu/user actions).  Developing a high level diagram highlighted the architecture of the code we were developing. We quickly decide one User table as this would  improve user experience.  
+
+While we only have one User table a user can be both a job creator and a proposal bidder.  Defining each user type was defined by table that user’s data would go to or affect, hence a @Services.user and a @Proposals.user.
+
+We quickly decided Louis to be the Github and Heroku owner. Planning out the work and who would do the work was done through trello.  We using feature branches in Github.  Initially we agreed two members of the team approve a pull request of a feature branch.  This changed over time to 1 member’s approval to merge a feature branch to improve productivity.  Our team locationality and timeframe available to work on the project were not always the same or co-located.  This brought with it some issues around productivity.  We all did our best to always keep the project moving forward in some way code or documentation.
+
+Trello, Slack, github were all key to communication and management of our project.  We assigned ourselves to a trello card we were working on and clearly named feature branches.  We tried to keep the work each of us was doing separate, but as our services and proposals tables were so closely linked this too brought about some issues to overcome. We did Daily catch ups/stand ups everyday some or all us of could be present.
+
+Progress was always measured by demonstrated working code. We used Rspec, code reviews and testing user interaction with the application to determine code progress and success. 
+
+Working on code, diagrams and documentation happen simultaneously. 
+
+In an effort to producing sustainable and iterative, incremental and evolutionary code. We always worked out what’s next? What’s working? What needs adjusting or fixing? What do we want  to implement next? What does a user expect to be able to do after this? What does a user want to see in relation to this action?
+
+Through the development of our application we made changes to design to better improve user experience on different pages. We had discussions on how code might be improved and how an action might be better placed.
+
 Trello Screenshot
 ![Trello Screenshot](images/trello.png)
 
