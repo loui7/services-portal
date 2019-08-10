@@ -15,6 +15,7 @@ Run the following commands in order.
 `cd services-portal`
 `bundle install`
 `cp ./config/database.example.yml ./config/database.yml`
+You will need to edit database.yml to correspond with your database credentials, then proceed.
 `rails db:create`
 `rails db:schema:load`
 
