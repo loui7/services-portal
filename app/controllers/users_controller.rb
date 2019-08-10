@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def add_review
+    # params[:user_id] will contain the id of the user who has completed the job.
     user = User.find(params[:user_id])
     ratings_total = user.ratings_avg * user.ratings_qty
     user.ratings_qty += 1

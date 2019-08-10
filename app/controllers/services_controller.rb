@@ -110,6 +110,8 @@ class ServicesController < ApplicationController
     service = Service.find(params[:service_id])
     service.paid_on = DateTime.now
     service.save
+
+    # Instance variable set so job owner can give the user who completed the service a rating.
     @user_worker = service.accepted_proposal.user
   end
 end
