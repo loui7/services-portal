@@ -83,6 +83,16 @@ PostgreSQL also did recieve some preferential treatment simply because it's the 
 ### Routes
 We opted to use a nested resources approach to maintain a sensible approach that reflected the relationships between services and proposals. This means that we enforce presence and naming for parameters required by controller actions.
 
+## Explain the different high-level components in your app
+Login Components
+![Login Components](images/login-highlevel-components.png)
+
+Service Components
+![Service Components](images/services-highlevel-components.png)
+
+Proposals Components
+![Proposal Components](images/proposals-highlevel-components.png)
+
 ## Describe (in general terms) the data structure of marketplace apps that are similar to your own.
 The most similar app to ours would be Airtasker. Their data structure is very similar to our own, where users can put up advertisements for jobs they want completed, and other users can bid on those jobs. They also have added complexity where the poster of a job advertisement can set a budget for the job.
 
@@ -104,22 +114,26 @@ The most similar app to ours would be Airtasker. Their data structure is very si
   * I can see the number of proposals on a job and the average proposal value, in order to make a competitive offer
   * I can receive payment for providing a service
 
-## Explain the different high-level components in your app
-High Level Components
-![High Level Components](images/different-highlevel-components.png)
-
-Devise Components
-![Devise Components](images/devise-highlevel-components.png)
-
 ## Provide wireframes for your app
-Navigation Wireframe
-![Navigation Wireframe](images/Navigation-wireframes.png)
+Mockup Navigation Wireframe
+![Mockup Navigation Wireframe](images/Navigation-wireframes.png)
 
-Service Wireframe
-![Service Wireframe](images/Service-Views.png)
+Application Navigation Wireframe
+![Mockup Navigation Wireframe](images/Application-Navigation-wireframes.png)
+![Mockup Navigation Wireframe](images/Application-Navigation-wireframes.png)
 
-Proposal View
-![Proposal View](images/Proposal-views.png)
+
+Mockup Service Wireframe
+![Mockup Service Wireframe](images/Service-Views.png)
+
+Application Service Wireframe
+![Mockup Service Wireframe](images/Application-Service-Views.png)
+
+Mockup Proposal View
+![Mockup Proposal View](images/Proposal-views.png)
+
+Application Proposal View
+![Mockup Proposal View](images/Application-Proposal-views.png)
 
 ## Describe the way tasks are being planned and tracked in your project
 We made use of Trello and verbally assigning tasks and agreeing on which parts of the app we would work on individually.
@@ -167,7 +181,14 @@ Again with using Devise, there is much that is hidden from us as. One considerat
 ## Research what your legal obligations are in relation to handling user data
 First and foremost we should have an accessible privacy policy. This would make clear our intentions for any user data, especially considering we do collect private phone numbers. Handing off payment processing to Stripe mitigates our responsibilities in this department, but shouldn't mitigate the care we take in handling what data we do collect. We should also consider ensuring that we encrypt any backups to ease compliance with "right to be forgotten" GDPR requirements should we deploy the solution globally.
 
+## Provide your database schema design
+* ![ERD](images/erd.png)
+
+
 ## Discuss the database relations to be implemented
+
+
+## Describe your project's models in terms of the relationships (active record associations) they have with each other
 * User - has many Services and Proposals
 * Service - belongs to User. Has many Proposals
 * Proposal - belongs to both a User and a Service
