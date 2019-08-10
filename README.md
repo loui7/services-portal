@@ -14,6 +14,7 @@ Run the following commands in order.
 `git clone https://github.com/loui7/services-portal.git`
 `cd services-portal`
 `bundle install`
+`cp ./config/database.example.yml ./config/database.yml`
 `rails db:create`
 `rails db:schema:load`
 
