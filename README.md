@@ -4,6 +4,23 @@
 * [App](https://better-services-portal.herokuapp.com/)
 * [Repository](https://github.com/loui7/services-portal)
 
+## Installation & Setup
+Prerequisites & Versions Tested With
+* ruby v2.6.3
+* bundler v1.17.3
+* PostgreSQL v11.3
+
+Run the following commands in order.
+`git clone https://github.com/loui7/services-portal.git`
+`cd services-portal`
+`bundle install`
+`rails db:create`
+`rails db:schema:load`
+
+(OPTIONAL: This loads example data into your database.)
+`rails db:seed`
+
+
 ## Identify the problem you’re trying to solve by building this particular marketplace app, and why it is a problem that needs solving
 The ‘gig economy’ has rapidly grown in recent years as technology has enabled people to directly connect with each other and exchange their services. This growth is driven by the efficiency that cutting out the middleman by automating it with technology allows. Services Portal will use technology in this way specifically to connect businesses with short term jobs and the workers who want to complete them.
 
@@ -161,14 +178,16 @@ In an effort to producing sustainable and iterative, incremental and evolutionar
 
 Through the development of our application we made changes to design to better improve user experience on different pages. We had discussions on how code might be improved and how an action might be better placed.
 
-Trello Screenshot
-![Trello Screenshot](images/trello.png)
+Trello Screenshots
+![Trello Screenshot 1](images/trello.png)
+![Trello Screenshot 2](images/trello2.PNG)
+[Live Board](https://trello.com/b/BokYDYiQ)
 
 ## Provide an overview and description of your source control process
 We made use of Git/GitHub to manage our codebase. We made agreements on how we would use the platform as a team (merging master rather than rebasing) and ensuring that we sought approval for pull requests before merging. We also agreed that the person making the pull request be responsible for merging their work into master.
 
 ## Provide an overview and description of your testing process
-Manual testing was used frequently, especially when reviewing another's pull request. Rspec tests were also defined.
+Manual testing was used frequently, especially when reviewing another's pull request. Rspec tests were also defined in './spec'. To see the results of Rspec tests, run `bundle exec rspec`
 
 ## Discuss and analyse requirements related to information system security
 Using Devise for authentication and Cloudinary for image hosting takes much of the work related to security out of our hands. Still there is need to be wary of malicious users - the most prominent for us was that despite hiding buttons exposed to users, it is still possible to fire off requests to the server. This could result in undesirable behaviour, and can be circumvented by implementing checks at the controller and/or model level to ensure that the data being processed is indeed valid.
