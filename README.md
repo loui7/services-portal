@@ -4,6 +4,25 @@
 * [App](https://better-services-portal.herokuapp.com/)
 * [Repository](https://github.com/loui7/services-portal)
 
+## Installation & Setup
+Prerequisites & Versions Tested With
+* ruby v2.6.3
+* bundler v1.17.3
+* PostgreSQL v11.3
+
+Run the following commands in order.
+`git clone https://github.com/loui7/services-portal.git`
+`cd services-portal`
+`bundle install`
+`cp ./config/database.example.yml ./config/database.yml`
+You will need to edit database.yml to correspond with your database credentials, then proceed.
+`rails db:create`
+`rails db:schema:load`
+
+(OPTIONAL: This loads example data into your database.)
+`rails db:seed`
+
+
 ## Identify the problem you’re trying to solve by building this particular marketplace app, and why it is a problem that needs solving
 The ‘gig economy’ has rapidly grown in recent years as technology has enabled people to directly connect with each other and exchange their services. This growth is driven by the efficiency that cutting out the middleman by automating it with technology allows. Services Portal will use technology in this way specifically to connect businesses with short term jobs and the workers who want to complete them.
 
@@ -83,6 +102,16 @@ PostgreSQL also did recieve some preferential treatment simply because it's the 
 ### Routes
 We opted to use a nested resources approach to maintain a sensible approach that reflected the relationships between services and proposals. This means that we enforce presence and naming for parameters required by controller actions.
 
+## Explain the different high-level components in your app
+Login Components
+![Login Components](images/login-highlevel-components.png)
+
+Service Components
+![Service Components](images/services-highlevel-components.png)
+
+Proposals Components
+![Proposal Components](images/proposals-highlevel-components.png)
+
 ## Describe (in general terms) the data structure of marketplace apps that are similar to your own.
 The most similar app to ours would be Airtasker. Their data structure is very similar to our own, where users can put up advertisements for jobs they want completed, and other users can bid on those jobs. They also have added complexity where the poster of a job advertisement can set a budget for the job.
 
@@ -104,22 +133,26 @@ The most similar app to ours would be Airtasker. Their data structure is very si
   * I can see the number of proposals on a job and the average proposal value, in order to make a competitive offer
   * I can receive payment for providing a service
 
-## Explain the different high-level components in your app
-High Level Components
-![High Level Components](images/different-highlevel-components.png)
-
-Devise Components
-![Devise Components](images/devise-highlevel-components.png)
-
 ## Provide wireframes for your app
-Navigation Wireframe
-![Navigation Wireframe](images/Navigation-wireframes.png)
+Mockup Navigation Wireframe
+![Mockup Navigation Wireframe](images/Navigation-wireframes.png)
 
-Service Wireframe
-![Service Wireframe](images/Service-Views.png)
+Application Navigation Wireframe
+![Mockup Navigation Wireframe](images/Application-Navigation-wireframes.png)
+![Mockup Navigation Wireframe](images/Application-Navigation-wireframes.png)
 
-Proposal View
-![Proposal View](images/Proposal-views.png)
+
+Mockup Service Wireframe
+![Mockup Service Wireframe](images/Service-Views.png)
+
+Application Service Wireframe
+![Mockup Service Wireframe](images/Application-Service-Views.png)
+
+Mockup Proposal View
+![Mockup Proposal View](images/Proposal-views.png)
+
+Application Proposal View
+![Mockup Proposal View](images/Application-Proposal-views.png)
 
 ## Describe the way tasks are being planned and tracked in your project
 We made use of Trello and verbally assigning tasks and agreeing on which parts of the app we would work on individually.
@@ -147,14 +180,16 @@ In an effort to producing sustainable and iterative, incremental and evolutionar
 
 Through the development of our application we made changes to design to better improve user experience on different pages. We had discussions on how code might be improved and how an action might be better placed.
 
-Trello Screenshot
-![Trello Screenshot](images/trello.png)
+Trello Screenshots
+![Trello Screenshot 1](images/trello.png)
+![Trello Screenshot 2](images/trello2.PNG)
+[Live Board](https://trello.com/b/BokYDYiQ)
 
 ## Provide an overview and description of your source control process
 We made use of Git/GitHub to manage our codebase. We made agreements on how we would use the platform as a team (merging master rather than rebasing) and ensuring that we sought approval for pull requests before merging. We also agreed that the person making the pull request be responsible for merging their work into master.
 
 ## Provide an overview and description of your testing process
-Manual testing was used frequently, especially when reviewing another's pull request. Rspec tests were also defined.
+Manual testing was used frequently, especially when reviewing another's pull request. Rspec tests were also defined in './spec'. To see the results of Rspec tests, run `bundle exec rspec`
 
 ## Discuss and analyse requirements related to information system security
 Using Devise for authentication and Cloudinary for image hosting takes much of the work related to security out of our hands. Still there is need to be wary of malicious users - the most prominent for us was that despite hiding buttons exposed to users, it is still possible to fire off requests to the server. This could result in undesirable behaviour, and can be circumvented by implementing checks at the controller and/or model level to ensure that the data being processed is indeed valid.
@@ -167,7 +202,18 @@ Again with using Devise, there is much that is hidden from us as. One considerat
 ## Research what your legal obligations are in relation to handling user data
 First and foremost we should have an accessible privacy policy. This would make clear our intentions for any user data, especially considering we do collect private phone numbers. Handing off payment processing to Stripe mitigates our responsibilities in this department, but shouldn't mitigate the care we take in handling what data we do collect. We should also consider ensuring that we encrypt any backups to ease compliance with "right to be forgotten" GDPR requirements should we deploy the solution globally.
 
+## Provide your database schema design
+* ![ERD](images/erd.png)
+
+
 ## Discuss the database relations to be implemented
+The database relations have been implemented as Primary and Foreign key relationships between tables.
+The primary key is autogenerated by PostGres as an 'id' column in the Services table, and is used as the primary key between tables.
+Foreign keys have been created between each table in the following form:
+* Service 1 to many with Proposal using service id as the main relationship
+* Service and Proposals as 1 to many to User table using user id as the main relationship
+
+## Describe your project's models in terms of the relationships (active record associations) they have with each other
 * User - has many Services and Proposals
 * Service - belongs to User. Has many Proposals
 * Proposal - belongs to both a User and a Service

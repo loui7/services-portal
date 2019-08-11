@@ -18,7 +18,7 @@
             <% else %>
                 <p>Completed on: <%= @service.completed_on.to_date %></p>
                 <% if @service.paid_on == nil %>
-                    <%= link_to "Pay #{@accepted_proposal.user.name}", new_service_proposal_payment_path(@service.id, @accepted_proposal.id) %>
+                    <%= link_to "Pay #{@accepted_proposal.user.name}", new_service_proposal_payment_path(@service.id, @accepted_proposal.id), data: { turbolinks: false } %>
                 <% end %>
             <% end %>
         <% else %>
