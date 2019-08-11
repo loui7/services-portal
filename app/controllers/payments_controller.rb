@@ -16,8 +16,8 @@ class PaymentsController < ApplicationController
     currency: 'aud',
     quantity: 1,
     }],
-    success_url: "http://localhost:3000/services/#{params[:service_id]}/proposals/#{params[:proposal_id]}/payment/success",
-    cancel_url: "http://localhost:3000//services/#{params[:service_id]}"
+    success_url: payment_success_url(service_id: @service.id, id: @proposal.id),
+    cancel_url: my_services_url,
     )
   end
 end
